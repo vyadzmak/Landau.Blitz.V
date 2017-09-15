@@ -1,0 +1,9 @@
+.toolbar__content .speed-dial {
+  position: absolute;
+  bottom: -60px;
+  right: -20px;
+}
+
+.toolbar__content .btn--floating {
+  position: relative;
+}
