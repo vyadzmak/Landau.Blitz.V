@@ -1,2 +1,23 @@
 /** Stylus Styles */
+@import './font-awesome/font-awesome'
 @import '../../node_modules/vuetify/src/stylus/main'
+@import './roboto/index'
+@import './material-icons/index'
+
+.v-card-form
+    padding 10px 20px
+
+.modal--active
+    & > div
+        & > .menu__content--select
+            z-index 1095 !important
+
+.modal--active
+    & > div
+        & > .menu__content
+            z-index 1095 !important
+
+.modal--active
+    & > div
+        & > .dialog__content
+            z-index 1095 !important

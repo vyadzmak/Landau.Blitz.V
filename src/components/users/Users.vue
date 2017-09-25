@@ -2,11 +2,11 @@
     <div>
         <v-card>
       <v-card-title>
-      {{ msg }}
+      <v-btn @click.stop="showUpdateModal({})" success dark>Добавить пользователя</v-btn>
       <v-spacer></v-spacer>
       <v-text-field
         append-icon="search"
-        label="Search"
+        label="Поиск"
         single-line
         hide-details
         v-model="search"
@@ -18,14 +18,16 @@
       v-bind:search="search"
     >
     <template slot="items" scope="props">
-    <tr  @click="goToUserInfo(props.item.id)">
-      <td class="text-xs-right">{{ props.item.id }}</td>
-      <td>{{ props.item.name }}</td>
-      <td class="text-xs-right">{{ props.item.username }}</td>
-      <td class="text-xs-right">{{ props.item.email }}</td>
-      <td class="text-xs-right">{{ props.item.phone }}</td>
-      <td class="text-xs-right">{{ props.item.website }}</td>
-      <td class="text-xs-right">{{ props.item.company.name }}</td>
+    <tr>
+      <td>{{ props.item.Id }}</td>
+      <td>{{ props.item.LastName }}</td>
+      <td>{{ props.item.FirstName }}</td>
+      <td>{{ props.item.Email }}</td>
+      <td>{{ props.item.PhoneNumber }}</td>
+      <td>{{ props.item.Login.RegistrationDate }}</td>
+      <td>{{ props.item.Login.LastLoginDate }}</td>
+      <td class="px-1"><v-btn @click.stop="showUpdateModal(props.item)" icon class="indigo--text"><v-icon>fa-pencil-square-o</v-icon></v-btn></td>
+      <td class="px-1"><v-btn @click.stop="showDeleteModal(props.item.Id)" icon class="pink--text"><v-icon>fa-trash</v-icon></v-btn></td>
     </tr>
     </template>
   </v-data-table>

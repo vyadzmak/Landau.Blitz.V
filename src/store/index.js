@@ -1,6 +1,9 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
 import VuexPersist from 'vuex-persist'
+import * as mutations from './mutations'
+import projects from './modules/projects/projects'
+import balanceTable from './modules/balance-table/balance-table'
 
 Vue.use(Vuex)
 
@@ -21,25 +24,23 @@ const localStorage = new VuexPersist({
 }).plugin
 
 const store = new Vuex.Store({
+  strict: process.env.NODE_ENV !== 'production', // check if something updates our model not through mutation
   state: {
     userData: null,
-    loading: 0
+    loading: 0,
+    snackbarOptions: {snackbar: false},
+    updateProperty: null
   },
-  mutations: {
-    addUserData (state, payload) {
-      state.userData = payload
-    },
-    deleteUserData (state) {
-      state.userData = null
-    },
-    addRUserData (state, payload) {
-      state.userData = payload
-    },
-    showSpinner (state, payload) {
-      state.loading += payload ? 1 : -1
-    }
+  // getters
+  getters: {
+    userData: state => state.userData,
+    snackbarOptions: state => state.snackbarOptions,
+    updateProperty: state => state.updateProperty,
+    loading: state => state.loading
   },
-  plugins: [localStorage, sessionStorage]
+  mutations,
+  plugins: [localStorage, sessionStorage],
+  modules: {projects, balanceTable}
 })
 
 export default store

@@ -12,30 +12,32 @@
           <v-flex>
             <v-card class="elevation-18">
               <v-form v-model="valid">
-              <v-card-text primary-title>
-                <v-text-field
-      label="Name"
-      v-model="loginData.Name"
-      :rules="nameRules"
-      :counter="10"
-      required
-    ></v-text-field>
-    </v-card-text>
-    <v-card-text primary-title>
+                <v-card-text primary-title>
     <v-text-field
-      label="E-mail"
-      v-model="loginData.Email"
+      label="Логин"
+      v-model="loginData.Login"
       :rules="emailRules"
       required
     >
     </v-text-field>
               </v-card-text>
+              <v-card-text primary-title>
+                <v-text-field
+      label="Пароль"
+      v-model="loginData.Password"
+      :rules="passwordRules"
+      type="password"
+      :counter="10"
+      required
+    ></v-text-field>
+    </v-card-text>
+    
               <v-card-actions class="white">
-                <v-checkbox label="Remember Me"
+                <v-checkbox label="Запомнить меня"
                         v-model="rememberMe"
                         color="indigo"
                         hide-details></v-checkbox>
-                <v-btn type="submit" error dark large @click="loginUser">Submit</v-btn>
+                <v-btn type="submit" error dark large @click="loginUser">Вход</v-btn>
               </v-card-actions>
   </v-form>
             </v-card>
